@@ -1,4 +1,6 @@
+// declared variables
 var rightNow = moment().format("MMMM Do, YYYY");
+var momentNow = moment();
 var currentTime = moment().format("h:mm:ss a");
 var date = document.getElementById('currentDay');
 var nineAm = document.getElementById("#9am");
@@ -12,48 +14,65 @@ var fourPm = document.getElementById("#16pm");
 var fivePm = document.getElementById("#17pm");
 var sixPm = document.getElementById("#18pm");
 var sevenPm = document.getElementById("#19pm");
+var eightPm
+var nineAm = moment().hour(9);
+var tenAm = moment().hour(10);
+var elevenAm = moment().hour(11);
+var twelvePm = moment().hour(12);
+var twoPm = moment().hour(13);
+var threePm = moment().hour(14);
+var fourPm = moment().hour(15);
+var fivePm = moment().hour(16);
+var sixPm = moment().hour(17);
+var sevenPm = moment().hour(18);
+var eightPm = moment().hour(19);
+
+var userInput
+var hourSpan
 var TimeofDay = [ nineAm, tenAm, elevenAm, twelvePm, onePm, twoPm, threePm, fourPm, fivePm, sixPm, sevenPm];
- function changedate(){
+//$.each(TimeofDay, function () {
+ // events = [events9, events10, events11, events12, events13, events14, events15, events16, events17]
+ //});
+// sets current day at the top of the page 
+function changedate(){
    date.innerHTML = rightNow
  }
  changedate();
  function initPage() {
-  console.log("Current Hour " + hour);
+  console.log("Current Hour " + currentTime);
  var events9 = JSON.parse(localStorage.getItem('nineAm')) || "";
- nineAm.val(events9);
+ $(nineAm).val(events9);
  var events10 = JSON.parse(localStorage.getItem('tenAm')) || "";
- tenAm.val(events10);
+ $(tenAm).val(events10);
  var events11 = JSON.parse(localStorage.getItem('elevenAm')) || "";
- elevenAm.val(events11);
+ $(elevenAm).val(events11);
 
  var events12 = JSON.parse(localStorage.getItem('twelvePm')) || "";
- twelvePm.val(events12);
+ $(twelvePm).val(events12);
 
  var events13 = JSON.parse(localStorage.getItem('onePm')) || "";
- onePm.val(events13);
+ $(onePm).val(events13);
 
  var events14 = JSON.parse(localStorage.getItem('twoPm')) || "";
- twoPm.val(events14);
+ $(twoPm).val(events14);
 
  var events15 = JSON.parse(localStorage.getItem('threePm')) || "";
- threePm.val(events15);
+ $(threePm).val(events15);
 
  var events16 = JSON.parse(localStorage.getItem('fourPm')) || "";
- fourPm.val(events16);
+ $(fourPm).val(events16);
 
  var events17 = JSON.parse(localStorage.getItem('fivePm')) || "";
- fivePm.val(events17);
+ $(fivePm).val(events17);
 
- var events17 = JSON.parse(localStorage.getItem('sixPm')) || "";
- sixPm.val(events17);
+ var events18 = JSON.parse(localStorage.getItem('sixPm')) || "";
+ $(sixPm).val(events18);
 
- var events17 = JSON.parse(localStorage.getItem('sevenPm')) || "";
- sevenPm.val(events17);
-
+ var events19 = JSON.parse(localStorage.getItem('sevenPm')) || "";
+ $(sevenPm).val(events19);
+ var events20 = JSON.parse(localStorage.getItem('eightPm')) || "";
+ $(eightPm).val(events20);
  }
- //$.each(TimeofDay, function () {
- // events = [events9, events10, events11, events12, events13, events14, events15, events16, events17]
- //});
  var startScheduler = function () {
   currentTime = moment().format("hh:mm:ss");
 if (moment().isBetween(nineAm, tenAm)){
@@ -154,5 +173,26 @@ else if (moment().isAfter(sevenPm)) {
 else {
   $("#18pm").addClass("future");
 }
- }
-startScheduler();
+if (moment().isBetween(sevenPm, eightPm)) {
+  $("#19pm").addClass("present");
+}
+else if (moment().isAfter(sevenPm)) {
+  $("#19pm").addClass("past");
+}
+else {
+  $("#19pm").addClass("future");
+}
+}
+var runpage = (function(){
+  initPage();
+  startScheduler();
+
+$(".saveBtn").on("click", function(){
+  userInput = $(this).siblings(".form-control").val();
+  console.log(userInput);
+  hourSpan = $(this).siblings(".input-group-prepend").text();
+  console.log(hourSpan);
+  localStorage.setItem(hourSpan, JSON.stringify(userInput));
+})
+});
+runpage();
