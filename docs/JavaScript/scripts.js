@@ -1,5 +1,6 @@
 var rightNow = moment().format("MMMM Do, YYYY");
-var date = document.getElementById('currentDay')
+var currentTime = moment().format("h:mm:ss a");
+var date = document.getElementById('currentDay');
 var nineAm = document.getElementById("#9am");
 var tenAm = document.getElementById("#10am");
 var elevenAm = document.getElementById("#11am");
@@ -16,21 +17,43 @@ var TimeofDay = [ nineAm, tenAm, elevenAm, twelvePm, onePm, twoPm, threePm, four
    date.innerHTML = rightNow
  }
  changedate();
+ function initPage() {
+  console.log("Current Hour " + hour);
  var events9 = JSON.parse(localStorage.getItem('nineAm')) || "";
+ nineAm.val(events9);
  var events10 = JSON.parse(localStorage.getItem('tenAm')) || "";
+ tenAm.val(events10);
  var events11 = JSON.parse(localStorage.getItem('elevenAm')) || "";
+ elevenAm.val(events11);
+
  var events12 = JSON.parse(localStorage.getItem('twelvePm')) || "";
+ twelvePm.val(events12);
+
  var events13 = JSON.parse(localStorage.getItem('onePm')) || "";
+ onePm.val(events13);
+
  var events14 = JSON.parse(localStorage.getItem('twoPm')) || "";
+ twoPm.val(events14);
+
  var events15 = JSON.parse(localStorage.getItem('threePm')) || "";
+ threePm.val(events15);
+
  var events16 = JSON.parse(localStorage.getItem('fourPm')) || "";
+ fourPm.val(events16);
+
  var events17 = JSON.parse(localStorage.getItem('fivePm')) || "";
+ fivePm.val(events17);
+
  var events17 = JSON.parse(localStorage.getItem('sixPm')) || "";
+ sixPm.val(events17);
+
  var events17 = JSON.parse(localStorage.getItem('sevenPm')) || "";
- 
- $.each(TimeofDay, function () {
-  events = [events9, events10, events11, events12, events13, events14, events15, events16, events17]
- });
+ sevenPm.val(events17);
+
+ }
+ //$.each(TimeofDay, function () {
+ // events = [events9, events10, events11, events12, events13, events14, events15, events16, events17]
+ //});
  var startScheduler = function () {
   currentTime = moment().format("hh:mm:ss");
 if (moment().isBetween(nineAm, tenAm)){
