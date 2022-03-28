@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<!--head of html with links to fonts bootstrap and the style sheet--> 
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="docs/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
-
+<!-- top of the body where the title of the page is located-->
   <body>
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
@@ -34,8 +35,8 @@
           <div class="input-group-prepend">
             <span class="input-group-text hour">09:00 am </span>
           </div>
-          <textarea class="form-control" aria-label="With textarea" id="9am"></textarea>
-          <button type="button" class="saveBtn"></i></button>
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+          <button type="button" class="saveBtn"><i class="fas fa-save"></i></button>
         </div>
       </div>
       
@@ -45,7 +46,7 @@
             <span class="input-group-text hour">10:00 am </span>
           </div>
           <textarea class="form-control" aria-label="With textarea" id="10am"></textarea>
-          <button type="button" class="saveBtn"></i></button>
+          <button type="button" class="saveBtn"><i class="fas fa-save"></i></button>
         </div>
       </div>
       
@@ -55,7 +56,7 @@
             <span class="input-group-text hour">11:00 am </span>
           </div>
           <textarea class="form-control" aria-label="With textarea" id="11am"></textarea>
-          <button type="button" class="saveBtn"></i></button>
+          <button type="button" class="saveBtn"></button>
         </div>
       </div>
       
@@ -139,6 +140,7 @@
         </div>
       </div>
     </div>
+    <!-- jquery, moments.js script file.-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="docs/JavaScript/scripts.js"></script>
