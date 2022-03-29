@@ -25,7 +25,7 @@ function changedate(){
    date.innerHTML = rightNow
  }
  changedate();
- // is suppose to pull data from local storage but it wont and i dont understand why i've tried so many ways to localStorage.getItem but it just wont
+ // is suppose to pull data from local storage but it wont and i dont understand why i've tried so many ways to localStorage.getItem but it just wont work
  function initPage() {
    moment.set
   console.log("Current Hour " + currentTime);
@@ -75,14 +75,16 @@ var threePm = moment().hour(15);
 var fourPm = moment().hour(16);
 var fivePm = moment().hour(17);
 var sixPm = moment().hour(18);
+var sevenPm = moment().hour(19);
+var eightPm = moment().hour(20);
 if (moment().isBetween(nineAm, tenAm)){
   $("#9am").addClass("present");
 }
 else if (moment().isAfter(tenAm)){
-  $("9am").addClass("past");
+  $("#9am").addClass("past");
 }
 else {
-  $("9am").addClass("future")
+  $("#9am").addClass("future")
 }
 if (moment().isBetween(tenAm, elevenAm)) {
   $("#10am").addClass("present");
@@ -188,12 +190,9 @@ else {
 var runpage = (function(){
   initPage();
   startScheduler();
-
 $(".saveBtn").on("click", function(){
   userInput = $(this).siblings(".form-control").val();
-  console.log(userInput);
-  hourSpan = $(this).siblings(".input-group-prepend").text();
-  console.log(hourSpan);
+  hourSpan = $(this).siblings(".text-box").text();
   localStorage.setItem(hourSpan, JSON.stringify(userInput));
 })
 });
