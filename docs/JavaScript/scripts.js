@@ -1,4 +1,4 @@
-// declared variables
+// declared variables for dates and times with moment.js and DOM
 var rightNow = moment().format("MMMM Do, YYYY");
 var momentNow = moment();
 var currentTime = moment().format("h:mm:ss a");
@@ -15,66 +15,66 @@ var fivePm = document.getElementById("#17pm");
 var sixPm = document.getElementById("#18pm");
 var sevenPm = document.getElementById("#19pm");
 var eightPm
-var nineAm = moment().hour(9);
-var tenAm = moment().hour(10);
-var elevenAm = moment().hour(11);
-var twelvePm = moment().hour(12);
-var twoPm = moment().hour(13);
-var threePm = moment().hour(14);
-var fourPm = moment().hour(15);
-var fivePm = moment().hour(16);
-var sixPm = moment().hour(17);
-var sevenPm = moment().hour(18);
-var eightPm = moment().hour(19);
-
+// users input saved into local storage and location of boxes
 var userInput
 var hourSpan
+// array of hours
 var TimeofDay = [ nineAm, tenAm, elevenAm, twelvePm, onePm, twoPm, threePm, fourPm, fivePm, sixPm, sevenPm];
-//$.each(TimeofDay, function () {
- // events = [events9, events10, events11, events12, events13, events14, events15, events16, events17]
- //});
 // sets current day at the top of the page 
 function changedate(){
    date.innerHTML = rightNow
  }
  changedate();
+ // is suppose to pull data from local storage but it wont and i dont understand why i've tried so many ways to localStorage.getItem but it just wont
  function initPage() {
+   moment.set
   console.log("Current Hour " + currentTime);
- var events9 = JSON.parse(localStorage.getItem('nineAm')) || "";
+ var events9 = JSON.parse(localStorage.getItem('09:00 am')) || "";
  $(nineAm).val(events9);
- var events10 = JSON.parse(localStorage.getItem('tenAm')) || "";
+ var events10 = JSON.parse(localStorage.getItem('10:00 am')) || "";
  $(tenAm).val(events10);
- var events11 = JSON.parse(localStorage.getItem('elevenAm')) || "";
+ var events11 = JSON.parse(localStorage.getItem('11:00 am')) || "";
  $(elevenAm).val(events11);
 
- var events12 = JSON.parse(localStorage.getItem('twelvePm')) || "";
+ var events12 = JSON.parse(localStorage.getItem('12:00 pm')) || "";
  $(twelvePm).val(events12);
 
- var events13 = JSON.parse(localStorage.getItem('onePm')) || "";
+ var events13 = JSON.parse(localStorage.getItem('01:00 pm')) || "";
  $(onePm).val(events13);
 
- var events14 = JSON.parse(localStorage.getItem('twoPm')) || "";
+ var events14 = JSON.parse(localStorage.getItem('02:00 pm')) || "";
  $(twoPm).val(events14);
 
- var events15 = JSON.parse(localStorage.getItem('threePm')) || "";
+ var events15 = JSON.parse(localStorage.getItem('03:00 pm')) || "";
  $(threePm).val(events15);
 
- var events16 = JSON.parse(localStorage.getItem('fourPm')) || "";
+ var events16 = JSON.parse(localStorage.getItem('04:00 pm')) || "";
  $(fourPm).val(events16);
 
- var events17 = JSON.parse(localStorage.getItem('fivePm')) || "";
+ var events17 = JSON.parse(localStorage.getItem('05:00 pm')) || "";
  $(fivePm).val(events17);
 
- var events18 = JSON.parse(localStorage.getItem('sixPm')) || "";
+ var events18 = JSON.parse(localStorage.getItem('06:00 pm')) || "";
  $(sixPm).val(events18);
 
- var events19 = JSON.parse(localStorage.getItem('sevenPm')) || "";
+ var events19 = JSON.parse(localStorage.getItem('07:00 pm')) || "";
  $(sevenPm).val(events19);
- var events20 = JSON.parse(localStorage.getItem('eightPm')) || "";
+ var events20 = JSON.parse(localStorage.getItem('08:00 pm')) || "";
  $(eightPm).val(events20);
  }
+ // function which sets the hours to your computers time and then color codes boxes based on that time
  var startScheduler = function () {
   currentTime = moment().format("hh:mm:ss");
+var nineAm = moment().hour(9);
+var tenAm = moment().hour(10);
+var elevenAm = moment().hour(11);
+var twelvePm = moment().hour(12);
+var onePm = moment().hour(13);
+var twoPm = moment().hour(14);
+var threePm = moment().hour(15);
+var fourPm = moment().hour(16);
+var fivePm = moment().hour(17);
+var sixPm = moment().hour(18);
 if (moment().isBetween(nineAm, tenAm)){
   $("#9am").addClass("present");
 }
@@ -183,6 +183,8 @@ else {
   $("#19pm").addClass("future");
 }
 }
+// runs functions and enables the save button to save the users inputs into local storage
+// users inputs will save in local storage but will not get pulled from there i used the correct key names i dont know.
 var runpage = (function(){
   initPage();
   startScheduler();
