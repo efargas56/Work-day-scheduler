@@ -192,7 +192,7 @@ var runpage = (function(){
   startScheduler();
 $(".saveBtn").on("click", function(){
   userInput = $(this).siblings(".form-control").val();
-  hourSpan = $(this).siblings(".text-box").text();
+  hourSpan = $(this).siblings(".input-group-prepend").text();
   localStorage.setItem(hourSpan, JSON.stringify(userInput));
 })
 });
